@@ -1,0 +1,121 @@
+{  
+    "folder1":{
+        "folder1.1":{
+            "_options":[
+                {
+                    "name":"setting 1",
+                    "type":"boolean",
+                    "values":"",
+                    "value":"y"
+                }
+            ]
+        },
+        "folder1.2":{
+            "_options":[
+                {
+                    "name":"show me",
+                    "type":"boolean",
+                    "values":"",
+                    "value":"y"
+                }
+            ]
+        },
+        "_options":[
+            {
+                "name":"setting 1",
+                "type":"boolean",
+                "values":"",
+                "value":"y"
+            },
+            {
+                "name":"setting 2",
+                "type":"string",
+                "values":"",
+                "value":"screen setting"
+            },
+            {
+                "name":"another option",
+                "type":"enum",
+                "values":"VALUE1,VALUE2,VALUE3",
+                "value":"VALUE1",
+                "value_index":"0"
+            }
+        ]
+    },
+    "folder2":{
+        "folder2.1":{
+            "_options":[
+                {
+                    "name":"show me",
+                    "type":"boolean",
+                    "values":"",
+                    "value":"y"
+                },
+                {
+                    "name":"show me 2",
+                    "type":"string",
+                    "values":"",
+                    "value":"kjahsdkjhakjsdh"
+                },
+                {
+                    "name":"another option",
+                    "type":"enum",
+                    "values":"VALUE1,VALUE2,VALUE3",
+                    "value":"VALUE1",
+                    "value_index":"0"
+                }
+            ]
+        },
+        "folder2.2":{
+            "_options":[
+                {
+                    "name":"show me",
+                    "type":"boolean",
+                    "values":"",
+                    "value":"y"
+                },
+                {
+                    "name":"show me 2",
+                    "type":"string",
+                    "values":"",
+                    "value":"kjahsdkjhakjsdh"
+                },
+                {
+                    "name":"another option",
+                    "type":"enum",
+                    "values":"VALUE1,VALUE2,VALUE3",
+                    "value":"VALUE1",
+                    "value_index":"0"
+                }
+            ]
+        },
+        "_options":[
+            {
+                "name":"show me",
+                "type":"boolean",
+                "values":"",
+                "value":"y"
+            },
+            {
+                "name":"show me 2",
+                "type":"string",
+                "values":"",
+                "value":"kjahsdkjhakjsdh"
+            }
+        ]
+    },
+    "_options":[
+            {
+                "name":"root",
+                "type":"boolean",
+                "values":"",
+                "value":"y"
+            },
+            {
+                "name":"root1",
+                "type":"string",
+                "values":"",
+                "value":"kafdgjklsfdaaasdd"
+            }
+        ]
+}
