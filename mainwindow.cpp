@@ -14,12 +14,3 @@ MainWindow::~MainWindow()
 }
 
 
-
-
-
-
-
-
-
-
-
