@@ -12,6 +12,7 @@
 #include <QLabel>
 #include <QGridLayout>
 #include <QLineEdit>
+#include <QCheckBox>
 
 #include <QJsonParseError>
 #include <QDragEnterEvent>
@@ -45,11 +46,12 @@ public:
     void modifyJsonValue(QJsonDocument &doc, const QString &path, const QJsonValue &newValue);
     void updateJsonAndMenu();
     QString editLineDialog();
+    void setJsonSetLine();
+    bool editBoolDiaolg();
 protected slots:
     void init();
 private:
     Ui::MainWindow *ui;
-    QDialog *dialog;
     QString path;
     QString jsonSetLine;
 

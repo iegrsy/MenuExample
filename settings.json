@@ -1,19 +1,19 @@
 {
     "_options": [
         {
-            "name": "setting_boolean",
+            "name": "deneme",
             "type": "boolean",
-            "value": false,
+            "value": "y",
             "values": ""
         },
         {
-            "name": "setting_string",
+            "name": "settings2",
             "type": "string",
             "value": "kafdgjklsfdaaasdd",
             "values": ""
         },
         {
-            "name": "setting_enum",
+            "name": "settings3",
             "type": "enum",
             "value": "VALUE1",
             "value_index": "0",
@@ -23,30 +23,29 @@
     "folder1": {
         "_options": [
             {
-                "name": "setting_boolean",
+                "name": "settings4",
                 "type": "boolean",
                 "value": "y",
                 "values": ""
             },
             {
-                "name": "setting 2",
+                "name": "settings5",
                 "type": "string",
                 "value": "screen setting",
                 "values": ""
             },
             {
-                "name": "another option",
+                "name": "settings6",
                 "type": "enum",
                 "value": "VALUE1",
                 "value_index": "0",
                 "values": "VALUE1,VALUE2,VALUE3"
             }
         ],
-        "folder1": "setting_boolean",
         "folder11": {
             "_options": [
                 {
-                    "name": "setting_boolean",
+                    "name": "settings7",
                     "type": "boolean",
                     "value": "y",
                     "values": ""
@@ -56,7 +55,7 @@
         "folder12": {
             "_options": [
                 {
-                    "name": "setting_boolean",
+                    "name": "settings8",
                     "type": "boolean",
                     "value": "y",
                     "values": ""
@@ -67,13 +66,13 @@
     "folder2": {
         "_options": [
             {
-                "name": "setting_boolean",
+                "name": "settings10",
                 "type": "boolean",
                 "value": "y",
                 "values": ""
             },
             {
-                "name": "show me 2",
+                "name": "",
                 "type": "string",
                 "value": "kjahsdkjhakjsdh",
                 "values": ""
@@ -82,7 +81,7 @@
         "folder21": {
             "_options": [
                 {
-                    "name": "setting_boolean",
+                    "name": "settings12",
                     "type": "boolean",
                     "value": "y",
                     "values": ""
@@ -105,7 +104,7 @@
         "folder22": {
             "_options": [
                 {
-                    "name": "setting_boolean",
+                    "name": "show me",
                     "type": "boolean",
                     "value": "y",
                     "values": ""

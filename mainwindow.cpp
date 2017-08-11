@@ -39,6 +39,9 @@ void MainWindow::readJson(QString str)
 
     jDoc = QJsonDocument::fromJson(str.toUtf8());
     currentObj = jDoc.object();
+    folderTrace.clear();
+    prevObj.clear();
+    jsonSetLine.clear();
 }
 
 void MainWindow::showObj(QJsonObject obj)
@@ -151,25 +154,24 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             return false;
         }
     }
-    else if (obj == dialog)
-    {
-        if (event->type() == QEvent::KeyPress)
-        {
-            QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
-            if(keyEvent->key() == Qt::Key_Return)
-            {
-                qDebug()<<"Recorded correctly.";                
-                dialog->close();
-                return false;
-            }
-            else if (keyEvent->key() == Qt::Key_Escape) {
-                qDebug()<<"Exiting without saving.";
-                return false;
-            }
-        }
+    //    else if (obj == dialog)
+    //    {
+    //        if (event->type() == QEvent::KeyPress)
+    //        {
+    //            QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+    //            if(keyEvent->key() == Qt::Key_Return)
+    //            {
+    //                qDebug()<<"Recorded correctly.";
+    //                return false;
+    //            }
+    //            else if (keyEvent->key() == Qt::Key_Escape) {
+    //                qDebug()<<"Exiting without saving.";
+    //                return false;
+    //            }
+    //        }
 
-        return false;
-    }
+    //        return false;
+    //    }
     else
     {
         return QMainWindow::eventFilter(obj, event);
@@ -178,33 +180,43 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return false;
 }
 
+void MainWindow::setJsonSetLine()
+{
+    jsonSetLine.clear();
+    foreach (QString s, folderTrace) {
+        jsonSetLine.append(s).append(".");
+    }
+}
+
 void MainWindow::valueChange(QJsonObject obj, QString array_name, int index)
 {
     QJsonArray array = obj[array_name].toArray();
 
     if(array.at(index).toObject()["type"].toString().compare("boolean") == 0)
     {
-
-
-
-                editLineDialog();
-        //        qDebug()<<"type: bool";
-        //        jsonSetLine.clear();
-        //        foreach (QString s, folderTrace) {
-        //            jsonSetLine.append(s).append(".");
-        //        }
-        //        qDebug()<<"line: "<<jsonSetLine;
-
-        //        modifyJsonValue(jDoc, QString("%1_options[%2].name").arg(jsonSetLine).arg(index), "setting_boolean");
-        //        updateJsonAndMenu();
+        setJsonSetLine();
+        qDebug()<<editBoolDiaolg();
+        modifyJsonValue(jDoc, QString("%1_options[%2].name").arg(jsonSetLine).arg(index),
+                        "deneme");
+        updateJsonAndMenu();
     }
     else if (array.at(index).toObject()["type"].toString().compare("string") == 0)
     {
-        qDebug()<<"type: string";
+        setJsonSetLine();
+        modifyJsonValue(jDoc, QString("%1_options[%2].name").arg(jsonSetLine).arg(index),
+                        editLineDialog());
+        updateJsonAndMenu();
     }
     else if (array.at(index).toObject()["type"].toString().compare("enum") == 0)
     {
         qDebug()<<"type: enum";
+        setJsonSetLine();
+
+        qDebug()<<"line: "<<jsonSetLine;
+
+        modifyJsonValue(jDoc, QString("%1_options[%2].name").arg(jsonSetLine).arg(index),
+                        editLineDialog());
+        updateJsonAndMenu();
     }
     else
     {
@@ -221,8 +233,9 @@ void MainWindow::updateJsonAndMenu()
     f.write(QJsonDocument(jDoc).toJson());
     f.close();
 
-    //    readJson(readFile(path));
-    //    updateListMenu();
+
+    readJson(readFile(path));
+    updateListMenu();
 }
 
 void MainWindow::modifyJsonValue(QJsonValue& destValue, const QString& path, const QJsonValue& newValue)
@@ -334,22 +347,37 @@ void MainWindow::init()
 
 QString MainWindow::editLineDialog()
 {
-    dialog = new QDialog(this);
+    QDialog dlg(this);
     QLabel *label = new QLabel("Edit setting:");
     QLineEdit *editline = new QLineEdit;
+    connect(editline, SIGNAL(returnPressed()), &dlg, SLOT(close()));
 
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(label, 0, 0);
     layout->addWidget(editline, 1, 0);
 
-    dialog->setLayout(layout);
-    dialog->installEventFilter(this);
-    dialog->show();
+    dlg.setLayout(layout);
+    dlg.exec();
 
-    return "";
+    return editline->text();
 }
 
+bool MainWindow::editBoolDiaolg()
+{
+    QDialog dlg(this);
+    QLabel *label = new QLabel("Edit setting:");
+    QCheckBox *box = new QCheckBox;
+    connect(box, SIGNAL(stateChanged(int)), &dlg, SLOT(close()));
 
+    QGridLayout *layout = new QGridLayout;
+    layout->addWidget(label, 0, 0);
+    layout->addWidget(box, 1, 0);
+
+    dlg.setLayout(layout);
+    dlg.exec();
+
+    return box->isChecked();
+}
 
 
 
