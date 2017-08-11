@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->lstMenu->installEventFilter(this);
 
-    QString path = "/home/ieg/qt/qtProjects/MenuExample/test.json";
+    QString path = "/home/ieg/qt/qtProjects/MenuExample/settings.json";
     QString jData = readFile(path);
 
     readJson(jData);
@@ -23,7 +23,7 @@ MainWindow::~MainWindow()
 QString MainWindow::readFile(QString path)
 {
     QFile file(path);
-    if(!file.open(QIODevice::ReadOnly))
+    if(!file.open(QIODevice::ReadWrite | QIODevice::Text))
         return 0;
 
     QString jdata = file.readAll().data();
@@ -63,7 +63,8 @@ void MainWindow::showObj(QJsonObject obj)
             //            }
         }
     }
-    ui->lstMenu->addItem("back_menu");
+    if(prevObj.count() > 0)
+        ui->lstMenu->addItem("back_menu");
     ui->lstMenu->setCurrentRow(0);
 }
 
@@ -84,8 +85,8 @@ void MainWindow::backMenu()
 {
     if(!prevObj.isEmpty()){
         currentObj = prevObj.last();
-        showObj(currentObj);
         prevObj.removeLast();
+        showObj(currentObj);
     }
 }
 
@@ -110,7 +111,7 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
                 {
                     qDebug()<<selectItem;
                 }
-               if (selectItem.compare("back_menu") == 0)
+                if (selectItem.compare("back_menu") == 0)
                 {
                     backMenu();
                     qDebug()<<selectItem;
