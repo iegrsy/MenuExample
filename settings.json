@@ -106,16 +106,23 @@
     },
     "_options":[
             {
-                "name":"root",
+                "name":"setting_bool",
                 "type":"boolean",
                 "values":"",
-                "value":"y"
+                "value":false
             },
             {
-                "name":"root1",
+                "name":"setting_string",
                 "type":"string",
                 "values":"",
                 "value":"kafdgjklsfdaaasdd"
+            },
+            {
+                "name":"setting_enum",
+                "type":"enum",
+                "values":"VALUE1,VALUE2,VALUE3",
+                "value":"VALUE1",
+                "value_index":"0"
             }
         ]
 }

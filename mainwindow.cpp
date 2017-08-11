@@ -49,22 +49,32 @@ void MainWindow::showObj(QJsonObject obj)
         if(obj[s].isObject())
         {
             QListWidgetItem *item = new QListWidgetItem;
-            item->setIcon(QIcon("/home/ieg/Resimler/icon.png"));
+            item->setIcon(QIcon("/home/ieg/Resimler/icons/006-folder.png"));
             item->setText(s);
 
             ui->lstMenu->addItem(item);
         }
         else if(obj[s].isArray())
         {
-            ui->lstMenu->addItem(s);
-            //            for (int i=0; i<obj[s].toArray().count() ; i++)
-            //            {
-            //                ui->lstMenu->addItem(obj[s].toArray().at(i).toObject()["name"].toString());
-            //            }
+            //            ui->lstMenu->addItem(s);
+            for (int i=0; i<obj[s].toArray().count() ; i++)
+            {
+                QListWidgetItem *item = new QListWidgetItem;
+                item->setIcon(QIcon("/home/ieg/Resimler/icons/009-settings.png"));
+                item->setText(obj[s].toArray().at(i).toObject()["name"].toString());
+
+                ui->lstMenu->addItem(item);
+            }
         }
     }
     if(prevObj.count() > 0)
-        ui->lstMenu->addItem("back_menu");
+    {
+        QListWidgetItem *item = new QListWidgetItem;
+        item->setIcon(QIcon("/home/ieg/Resimler/icons/001-arrows.png"));
+        item->setText("back_menu");
+
+        ui->lstMenu->addItem(item);
+    }
     ui->lstMenu->setCurrentRow(0);
 }
 
@@ -90,6 +100,11 @@ void MainWindow::backMenu()
     }
 }
 
+//void MainWindow::optionsClick(QString)
+//{
+
+//}
+
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
     if (obj == ui->lstMenu)
@@ -106,15 +121,34 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
                 if(currentObj[selectItem].isObject())
                 {
                     intoObject(currentObj[selectItem].toObject());
+
+                    return false;
                 }
                 else if (currentObj[selectItem].isArray())
                 {
-                    qDebug()<<selectItem;
+                    qDebug()<<currentObj[selectItem];
+                    return false;
+                }
+                else
+                {
+                    foreach (QString s, currentObj.keys()) {
+                        if(currentObj[s].isArray() && s.compare("_options") == 0){
+                            for(int i = 0; i < currentObj[s].toArray().count(); i++)
+                            {
+                                QString temp = currentObj[s].toArray().at(i)
+                                        .toObject()["name"].toString();
+
+                                if(selectItem.compare(temp) == 0)
+                                {
+                                    valueChange(currentObj, s, i);
+                                }
+                            }
+                        }
+                    }
                 }
                 if (selectItem.compare("back_menu") == 0)
                 {
                     backMenu();
-                    qDebug()<<selectItem;
                 }
             }
             return false;
@@ -125,3 +159,53 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         return QMainWindow::eventFilter(obj, event);
     }
 }
+
+void MainWindow::valueChange(QJsonObject obj, QString array_name, int index)
+{
+    QJsonArray array = obj[array_name].toArray();
+
+    //    qDebug()<<array.at(index).toObject()["name"];
+    //    qDebug()<<array.at(index).toObject()["type"];
+    //    qDebug()<<array.at(index).toObject()["value"];
+
+    if(array.at(index).toObject()["type"].toString().compare("boolean") == 0)
+    {
+        qDebug()<<"type: bool";
+    }
+    else if (array.at(index).toObject()["type"].toString().compare("string") == 0)
+    {
+        qDebug()<<"type: string";
+    }
+    else if (array.at(index).toObject()["type"].toString().compare("enum") == 0)
+    {
+        qDebug()<<"type: enum";
+    }
+    else
+    {
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

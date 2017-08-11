@@ -34,6 +34,7 @@ public:
     bool eventFilter(QObject *obj, QEvent *event);
     void intoObject(QJsonObject obj);
     void backMenu();
+    void valueChange(QJsonObject obj, QString array_name, int index);
 private:
     Ui::MainWindow *ui;
     QJsonDocument jDoc;
