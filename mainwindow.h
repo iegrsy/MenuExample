@@ -7,6 +7,11 @@
 #include <QDebug>
 #include <QStringList>
 #include <QListWidgetItem>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QGridLayout>
+#include <QLineEdit>
 
 #include <QJsonParseError>
 #include <QDragEnterEvent>
@@ -35,10 +40,22 @@ public:
     void intoObject(QJsonObject obj);
     void backMenu();
     void valueChange(QJsonObject obj, QString array_name, int index);
+
+    void modifyJsonValue(QJsonValue &destValue, const QString &path, const QJsonValue &newValue);
+    void modifyJsonValue(QJsonDocument &doc, const QString &path, const QJsonValue &newValue);
+    void updateJsonAndMenu();
+    QString editLineDialog();
+protected slots:
+    void init();
 private:
     Ui::MainWindow *ui;
+    QDialog *dialog;
+    QString path;
+    QString jsonSetLine;
+
     QJsonDocument jDoc;
     QJsonObject currentObj;
+    QStringList folderTrace;
     QList<QJsonObject> prevObj;
 };
 

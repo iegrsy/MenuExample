@@ -1,128 +1,129 @@
-{  
-    "folder1":{
-        "folder1.1":{
-            "_options":[
-                {
-                    "name":"setting 1",
-                    "type":"boolean",
-                    "values":"",
-                    "value":"y"
-                }
-            ]
+{
+    "_options": [
+        {
+            "name": "setting_boolean",
+            "type": "boolean",
+            "value": false,
+            "values": ""
         },
-        "folder1.2":{
-            "_options":[
-                {
-                    "name":"show me",
-                    "type":"boolean",
-                    "values":"",
-                    "value":"y"
-                }
-            ]
+        {
+            "name": "setting_string",
+            "type": "string",
+            "value": "kafdgjklsfdaaasdd",
+            "values": ""
         },
-        "_options":[
+        {
+            "name": "setting_enum",
+            "type": "enum",
+            "value": "VALUE1",
+            "value_index": "0",
+            "values": "VALUE1,VALUE2,VALUE3"
+        }
+    ],
+    "folder1": {
+        "_options": [
             {
-                "name":"setting 1",
-                "type":"boolean",
-                "values":"",
-                "value":"y"
+                "name": "setting_boolean",
+                "type": "boolean",
+                "value": "y",
+                "values": ""
             },
             {
-                "name":"setting 2",
-                "type":"string",
-                "values":"",
-                "value":"screen setting"
+                "name": "setting 2",
+                "type": "string",
+                "value": "screen setting",
+                "values": ""
             },
             {
-                "name":"another option",
-                "type":"enum",
-                "values":"VALUE1,VALUE2,VALUE3",
-                "value":"VALUE1",
-                "value_index":"0"
+                "name": "another option",
+                "type": "enum",
+                "value": "VALUE1",
+                "value_index": "0",
+                "values": "VALUE1,VALUE2,VALUE3"
             }
-        ]
+        ],
+        "folder1": "setting_boolean",
+        "folder11": {
+            "_options": [
+                {
+                    "name": "setting_boolean",
+                    "type": "boolean",
+                    "value": "y",
+                    "values": ""
+                }
+            ]
+        },
+        "folder12": {
+            "_options": [
+                {
+                    "name": "setting_boolean",
+                    "type": "boolean",
+                    "value": "y",
+                    "values": ""
+                }
+            ]
+        }
     },
-    "folder2":{
-        "folder2.1":{
-            "_options":[
+    "folder2": {
+        "_options": [
+            {
+                "name": "setting_boolean",
+                "type": "boolean",
+                "value": "y",
+                "values": ""
+            },
+            {
+                "name": "show me 2",
+                "type": "string",
+                "value": "kjahsdkjhakjsdh",
+                "values": ""
+            }
+        ],
+        "folder21": {
+            "_options": [
                 {
-                    "name":"show me",
-                    "type":"boolean",
-                    "values":"",
-                    "value":"y"
+                    "name": "setting_boolean",
+                    "type": "boolean",
+                    "value": "y",
+                    "values": ""
                 },
                 {
-                    "name":"show me 2",
-                    "type":"string",
-                    "values":"",
-                    "value":"kjahsdkjhakjsdh"
+                    "name": "show me 2",
+                    "type": "string",
+                    "value": "kjahsdkjhakjsdh",
+                    "values": ""
                 },
                 {
-                    "name":"another option",
-                    "type":"enum",
-                    "values":"VALUE1,VALUE2,VALUE3",
-                    "value":"VALUE1",
-                    "value_index":"0"
+                    "name": "another option",
+                    "type": "enum",
+                    "value": "VALUE1",
+                    "value_index": "0",
+                    "values": "VALUE1,VALUE2,VALUE3"
                 }
             ]
         },
-        "folder2.2":{
-            "_options":[
+        "folder22": {
+            "_options": [
                 {
-                    "name":"show me",
-                    "type":"boolean",
-                    "values":"",
-                    "value":"y"
+                    "name": "setting_boolean",
+                    "type": "boolean",
+                    "value": "y",
+                    "values": ""
                 },
                 {
-                    "name":"show me 2",
-                    "type":"string",
-                    "values":"",
-                    "value":"kjahsdkjhakjsdh"
+                    "name": "show me 2",
+                    "type": "string",
+                    "value": "kjahsdkjhakjsdh",
+                    "values": ""
                 },
                 {
-                    "name":"another option",
-                    "type":"enum",
-                    "values":"VALUE1,VALUE2,VALUE3",
-                    "value":"VALUE1",
-                    "value_index":"0"
+                    "name": "another option",
+                    "type": "enum",
+                    "value": "VALUE1",
+                    "value_index": "0",
+                    "values": "VALUE1,VALUE2,VALUE3"
                 }
             ]
-        },
-        "_options":[
-            {
-                "name":"show me",
-                "type":"boolean",
-                "values":"",
-                "value":"y"
-            },
-            {
-                "name":"show me 2",
-                "type":"string",
-                "values":"",
-                "value":"kjahsdkjhakjsdh"
-            }
-        ]
-    },
-    "_options":[
-            {
-                "name":"setting_bool",
-                "type":"boolean",
-                "values":"",
-                "value":false
-            },
-            {
-                "name":"setting_string",
-                "type":"string",
-                "values":"",
-                "value":"kafdgjklsfdaaasdd"
-            },
-            {
-                "name":"setting_enum",
-                "type":"enum",
-                "values":"VALUE1,VALUE2,VALUE3",
-                "value":"VALUE1",
-                "value_index":"0"
-            }
-        ]
+        }
+    }
 }
