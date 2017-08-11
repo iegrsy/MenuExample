@@ -154,24 +154,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
             return false;
         }
     }
-    //    else if (obj == dialog)
-    //    {
-    //        if (event->type() == QEvent::KeyPress)
-    //        {
-    //            QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
-    //            if(keyEvent->key() == Qt::Key_Return)
-    //            {
-    //                qDebug()<<"Recorded correctly.";
-    //                return false;
-    //            }
-    //            else if (keyEvent->key() == Qt::Key_Escape) {
-    //                qDebug()<<"Exiting without saving.";
-    //                return false;
-    //            }
-    //        }
-
-    //        return false;
-    //    }
     else
     {
         return QMainWindow::eventFilter(obj, event);
@@ -195,27 +177,26 @@ void MainWindow::valueChange(QJsonObject obj, QString array_name, int index)
     if(array.at(index).toObject()["type"].toString().compare("boolean") == 0)
     {
         setJsonSetLine();
-        qDebug()<<editBoolDiaolg();
-        modifyJsonValue(jDoc, QString("%1_options[%2].name").arg(jsonSetLine).arg(index),
-                        "deneme");
+        modifyJsonValue(jDoc, QString("%1_options[%2].value").arg(jsonSetLine).arg(index),
+                        editBoolDiaolg(array.at(index).toObject()["value"].toBool()));
         updateJsonAndMenu();
     }
     else if (array.at(index).toObject()["type"].toString().compare("string") == 0)
     {
         setJsonSetLine();
-        modifyJsonValue(jDoc, QString("%1_options[%2].name").arg(jsonSetLine).arg(index),
-                        editLineDialog());
+        modifyJsonValue(jDoc, QString("%1_options[%2].value").arg(jsonSetLine).arg(index),
+                        editLineDialog(array.at(index).toObject()["value"].toString()));
         updateJsonAndMenu();
     }
     else if (array.at(index).toObject()["type"].toString().compare("enum") == 0)
     {
-        qDebug()<<"type: enum";
         setJsonSetLine();
+        int ix;
 
-        qDebug()<<"line: "<<jsonSetLine;
-
-        modifyJsonValue(jDoc, QString("%1_options[%2].name").arg(jsonSetLine).arg(index),
-                        editLineDialog());
+        modifyJsonValue(jDoc, QString("%1_options[%2].value").arg(jsonSetLine).arg(index),
+                        editComboBoxDialog(array.at(index).toObject()["values"].toString(),
+                        (int)array.at(index).toObject()["value_index"].toDouble(), ix));
+        modifyJsonValue(jDoc, QString("%1_options[%2].value_index").arg(jsonSetLine).arg(index),ix);
         updateJsonAndMenu();
     }
     else
@@ -345,11 +326,12 @@ void MainWindow::init()
     updateListMenu();
 }
 
-QString MainWindow::editLineDialog()
+QString MainWindow::editLineDialog(QString str)
 {
     QDialog dlg(this);
     QLabel *label = new QLabel("Edit setting:");
     QLineEdit *editline = new QLineEdit;
+    editline->setText(str);
     connect(editline, SIGNAL(returnPressed()), &dlg, SLOT(close()));
 
     QGridLayout *layout = new QGridLayout;
@@ -359,15 +341,16 @@ QString MainWindow::editLineDialog()
     dlg.setLayout(layout);
     dlg.exec();
 
+    qDebug()<<editline->text();
     return editline->text();
 }
 
-bool MainWindow::editBoolDiaolg()
+bool MainWindow::editBoolDiaolg(bool state)
 {
     QDialog dlg(this);
     QLabel *label = new QLabel("Edit setting:");
     QCheckBox *box = new QCheckBox;
-    connect(box, SIGNAL(stateChanged(int)), &dlg, SLOT(close()));
+    box->setChecked(state);
 
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(label, 0, 0);
@@ -376,11 +359,31 @@ bool MainWindow::editBoolDiaolg()
     dlg.setLayout(layout);
     dlg.exec();
 
+    qDebug()<<box->isChecked();
     return box->isChecked();
 }
 
+QString MainWindow::editComboBoxDialog(QString str,int index, int &i)
+{
+    QStringList items=str.split(",");
 
+    QDialog dlg(this);
+    QLabel *label = new QLabel("Edit setting:");
+    QComboBox *cbox = new QComboBox;
+    cbox->addItems(items);
+    cbox->setCurrentIndex(index);
 
+    QGridLayout *layout = new QGridLayout;
+    layout->addWidget(label, 0, 0);
+    layout->addWidget(cbox, 1, 0);
+
+    dlg.setLayout(layout);
+    dlg.exec();
+
+    qDebug()<<cbox->itemText(cbox->currentIndex());
+    i=cbox->currentIndex();
+    return cbox->itemText(cbox->currentIndex());
+}
 
 
 

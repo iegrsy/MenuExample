@@ -13,6 +13,7 @@
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QComboBox>
 
 #include <QJsonParseError>
 #include <QDragEnterEvent>
@@ -45,9 +46,10 @@ public:
     void modifyJsonValue(QJsonValue &destValue, const QString &path, const QJsonValue &newValue);
     void modifyJsonValue(QJsonDocument &doc, const QString &path, const QJsonValue &newValue);
     void updateJsonAndMenu();
-    QString editLineDialog();
     void setJsonSetLine();
-    bool editBoolDiaolg();
+    QString editLineDialog(QString val);
+    bool editBoolDiaolg(bool val);
+    QString editComboBoxDialog(QString str, int index, int &i);
 protected slots:
     void init();
 private:

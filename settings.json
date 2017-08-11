@@ -1,22 +1,22 @@
 {
     "_options": [
         {
-            "name": "deneme",
+            "name": "settings1",
             "type": "boolean",
-            "value": "y",
+            "value": true,
             "values": ""
         },
         {
             "name": "settings2",
             "type": "string",
-            "value": "kafdgjklsfdaaasdd",
+            "value": "sadsadas",
             "values": ""
         },
         {
             "name": "settings3",
             "type": "enum",
-            "value": "VALUE1",
-            "value_index": "0",
+            "value": "VALUE3",
+            "value_index": 2,
             "values": "VALUE1,VALUE2,VALUE3"
         }
     ],
@@ -25,7 +25,7 @@
             {
                 "name": "settings4",
                 "type": "boolean",
-                "value": "y",
+                "value": false,
                 "values": ""
             },
             {
@@ -38,7 +38,7 @@
                 "name": "settings6",
                 "type": "enum",
                 "value": "VALUE1",
-                "value_index": "0",
+                "value_index": 0,
                 "values": "VALUE1,VALUE2,VALUE3"
             }
         ],
@@ -47,7 +47,7 @@
                 {
                     "name": "settings7",
                     "type": "boolean",
-                    "value": "y",
+                    "value": false,
                     "values": ""
                 }
             ]
@@ -57,7 +57,7 @@
                 {
                     "name": "settings8",
                     "type": "boolean",
-                    "value": "y",
+                    "value": false,
                     "values": ""
                 }
             ]
@@ -66,13 +66,13 @@
     "folder2": {
         "_options": [
             {
-                "name": "settings10",
+                "name": "settings9",
                 "type": "boolean",
-                "value": "y",
+                "value": false,
                 "values": ""
             },
             {
-                "name": "",
+                "name": "settings10",
                 "type": "string",
                 "value": "kjahsdkjhakjsdh",
                 "values": ""
@@ -81,22 +81,22 @@
         "folder21": {
             "_options": [
                 {
-                    "name": "settings12",
+                    "name": "settings11",
                     "type": "boolean",
-                    "value": "y",
+                    "value": false,
                     "values": ""
                 },
                 {
-                    "name": "show me 2",
+                    "name": "settings12",
                     "type": "string",
                     "value": "kjahsdkjhakjsdh",
                     "values": ""
                 },
                 {
-                    "name": "another option",
+                    "name": "settings13",
                     "type": "enum",
                     "value": "VALUE1",
-                    "value_index": "0",
+                    "value_index": 0,
                     "values": "VALUE1,VALUE2,VALUE3"
                 }
             ]
@@ -104,22 +104,22 @@
         "folder22": {
             "_options": [
                 {
-                    "name": "show me",
+                    "name": "settings14",
                     "type": "boolean",
-                    "value": "y",
+                    "value": false,
                     "values": ""
                 },
                 {
-                    "name": "show me 2",
+                    "name": "settings15",
                     "type": "string",
                     "value": "kjahsdkjhakjsdh",
                     "values": ""
                 },
                 {
-                    "name": "another option",
+                    "name": "settings16",
                     "type": "enum",
                     "value": "VALUE1",
-                    "value_index": "0",
+                    "value_index": 0,
                     "values": "VALUE1,VALUE2,VALUE3"
                 }
             ]
