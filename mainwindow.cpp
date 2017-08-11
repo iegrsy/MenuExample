@@ -44,7 +44,6 @@ void MainWindow::readJson(QString str)
     prevObj.clear();
     jsonSetLine.clear();
 
-    qDebug()<<temp;
     foreach (QString s, temp) {
         intoObject(currentObj,s);
     }
@@ -370,7 +369,6 @@ QString MainWindow::editLineDialog(QString str)
     dlg.setLayout(layout);
     dlg.exec();
 
-    qDebug()<<editline->text();
     return editline->text();
 }
 
@@ -394,7 +392,6 @@ QString MainWindow::editComboBoxDialog(QString str,int index, int &i)
     dlg.setLayout(layout);
     dlg.exec();
 
-    qDebug()<<cbox->itemText(cbox->currentIndex());
     i=cbox->currentIndex();
     return cbox->itemText(cbox->currentIndex());
 }
