@@ -9,14 +9,14 @@
         {
             "name": "settings_string",
             "type": "string",
-            "value": "deneme1asd",
+            "value": "deneme1",
             "values": ""
         },
         {
             "name": "settings_enum",
             "type": "enum",
-            "value": "VALUE3",
-            "value_index": 2,
+            "value": "VALUE2",
+            "value_index": 1,
             "values": "VALUE1,VALUE2,VALUE3"
         }
     ],
@@ -42,6 +42,7 @@
                 "values": "VALUE1,VALUE2,VALUE3"
             }
         ],
+        "folder1": "deneme1asd",
         "folder11": {
             "_options": [
                 {
@@ -63,6 +64,7 @@
             ]
         }
     },
+    "folder11": false,
     "folder2": {
         "_options": [
             {

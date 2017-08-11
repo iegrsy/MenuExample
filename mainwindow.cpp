@@ -37,11 +37,17 @@ void MainWindow::readJson(QString str)
     if(str.isEmpty())
         return;
 
+    QStringList temp = folderTrace;
     jDoc = QJsonDocument::fromJson(str.toUtf8());
     currentObj = jDoc.object();
     folderTrace.clear();
     prevObj.clear();
     jsonSetLine.clear();
+
+    qDebug()<<temp;
+    foreach (QString s, temp) {
+        intoObject(currentObj,s);
+    }
 }
 
 void MainWindow::showObj(QJsonObject obj)
@@ -99,10 +105,11 @@ void MainWindow::updateListMenu()
     showObj(currentObj);
 }
 
-void MainWindow::intoObject(QJsonObject obj){
+void MainWindow::intoObject(QJsonObject obj, QString s){
 
+    folderTrace.append(s);
     prevObj.append(currentObj);
-    currentObj = obj;
+    currentObj = obj[s].toObject();
 
     updateListMenu();
 }
@@ -131,8 +138,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
                 QString selectItem = lstMenu->selectedItems().first()->text();
                 if(currentObj[selectItem].isObject())
                 {
-                    intoObject(currentObj[selectItem].toObject());
-                    folderTrace.append(selectItem);
+                    intoObject(currentObj,selectItem);
+
 
                     return false;
                 }
@@ -178,7 +185,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 void MainWindow::setJsonSetLine()
 {
     jsonSetLine.clear();
-    foreach (QString s, folderTrace) {
+    foreach (QString s, folderTrace)
+    {
         jsonSetLine.append(s).append(".");
     }
 }

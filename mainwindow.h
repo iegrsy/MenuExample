@@ -39,7 +39,7 @@ public:
     void showObj(QJsonObject obj);
     void updateListMenu();
     bool eventFilter(QObject *obj, QEvent *event);
-    void intoObject(QJsonObject obj);
+    void intoObject(QJsonObject obj, QString s);
     void backMenu();
     void valueChange(QJsonObject obj, QString array_name, int index);
 
