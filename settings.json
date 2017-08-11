@@ -1,19 +1,19 @@
 {
     "_options": [
         {
-            "name": "settings1",
+            "name": "settings_boolean",
             "type": "boolean",
             "value": true,
             "values": ""
         },
         {
-            "name": "settings2",
+            "name": "settings_string",
             "type": "string",
-            "value": "sadsadas",
+            "value": "deneme1asd",
             "values": ""
         },
         {
-            "name": "settings3",
+            "name": "settings_enum",
             "type": "enum",
             "value": "VALUE3",
             "value_index": 2,
@@ -23,19 +23,19 @@
     "folder1": {
         "_options": [
             {
-                "name": "settings4",
+                "name": "settings_boolean",
                 "type": "boolean",
-                "value": false,
+                "value": true,
                 "values": ""
             },
             {
-                "name": "settings5",
+                "name": "settings_string",
                 "type": "string",
                 "value": "screen setting",
                 "values": ""
             },
             {
-                "name": "settings6",
+                "name": "settings_enum",
                 "type": "enum",
                 "value": "VALUE1",
                 "value_index": 0,
@@ -45,9 +45,9 @@
         "folder11": {
             "_options": [
                 {
-                    "name": "settings7",
+                    "name": "settings_boolean",
                     "type": "boolean",
-                    "value": false,
+                    "value": true,
                     "values": ""
                 }
             ]
@@ -55,9 +55,9 @@
         "folder12": {
             "_options": [
                 {
-                    "name": "settings8",
+                    "name": "settings_boolean",
                     "type": "boolean",
-                    "value": false,
+                    "value": true,
                     "values": ""
                 }
             ]
@@ -66,13 +66,13 @@
     "folder2": {
         "_options": [
             {
-                "name": "settings9",
+                "name": "settings_boolean",
                 "type": "boolean",
-                "value": false,
+                "value": true,
                 "values": ""
             },
             {
-                "name": "settings10",
+                "name": "settings_string",
                 "type": "string",
                 "value": "kjahsdkjhakjsdh",
                 "values": ""
@@ -81,19 +81,19 @@
         "folder21": {
             "_options": [
                 {
-                    "name": "settings11",
+                    "name": "settings_boolean",
                     "type": "boolean",
                     "value": false,
                     "values": ""
                 },
                 {
-                    "name": "settings12",
+                    "name": "settings_string",
                     "type": "string",
                     "value": "kjahsdkjhakjsdh",
                     "values": ""
                 },
                 {
-                    "name": "settings13",
+                    "name": "settings_enum",
                     "type": "enum",
                     "value": "VALUE1",
                     "value_index": 0,
@@ -104,19 +104,19 @@
         "folder22": {
             "_options": [
                 {
-                    "name": "settings14",
+                    "name": "settings_boolean",
                     "type": "boolean",
                     "value": false,
                     "values": ""
                 },
                 {
-                    "name": "settings15",
+                    "name": "settings_string",
                     "type": "string",
                     "value": "kjahsdkjhakjsdh",
                     "values": ""
                 },
                 {
-                    "name": "settings16",
+                    "name": "settings_enum",
                     "type": "enum",
                     "value": "VALUE1",
                     "value_index": 0,

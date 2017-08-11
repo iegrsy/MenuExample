@@ -48,7 +48,6 @@ public:
     void updateJsonAndMenu();
     void setJsonSetLine();
     QString editLineDialog(QString val);
-    bool editBoolDiaolg(bool val);
     QString editComboBoxDialog(QString str, int index, int &i);
 protected slots:
     void init();

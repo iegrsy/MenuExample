@@ -66,6 +66,19 @@ void MainWindow::showObj(QJsonObject obj)
                 item->setIcon(QIcon("/home/ieg/Resimler/icons/009-settings.png"));
                 item->setText(obj[s].toArray().at(i).toObject()["name"].toString());
 
+                if((obj[s].toArray().at(i).toObject()["type"].toString()).compare("boolean") == 0)
+                {
+                    if(obj[s].toArray().at(i).toObject()["value"].toBool())
+                    {
+                        item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+                        item->setCheckState(Qt::Checked);
+                    }
+                    else
+                    {
+                        item->setCheckState(Qt::Unchecked);
+                    }
+                }
+
                 ui->lstMenu->addItem(item);
             }
         }
@@ -177,8 +190,16 @@ void MainWindow::valueChange(QJsonObject obj, QString array_name, int index)
     if(array.at(index).toObject()["type"].toString().compare("boolean") == 0)
     {
         setJsonSetLine();
-        modifyJsonValue(jDoc, QString("%1_options[%2].value").arg(jsonSetLine).arg(index),
-                        editBoolDiaolg(array.at(index).toObject()["value"].toBool()));
+
+        if(array.at(index).toObject()["value"].toBool() == true)
+        {
+            modifyJsonValue(jDoc, QString("%1_options[%2].value").arg(jsonSetLine).arg(index),false);
+        }
+        else if (array.at(index).toObject()["value"].toBool() == false)
+        {
+            modifyJsonValue(jDoc, QString("%1_options[%2].value").arg(jsonSetLine).arg(index),true);
+        }
+
         updateJsonAndMenu();
     }
     else if (array.at(index).toObject()["type"].toString().compare("string") == 0)
@@ -345,24 +366,6 @@ QString MainWindow::editLineDialog(QString str)
     return editline->text();
 }
 
-bool MainWindow::editBoolDiaolg(bool state)
-{
-    QDialog dlg(this);
-    QLabel *label = new QLabel("Edit setting:");
-    QCheckBox *box = new QCheckBox;
-    box->setChecked(state);
-
-    QGridLayout *layout = new QGridLayout;
-    layout->addWidget(label, 0, 0);
-    layout->addWidget(box, 1, 0);
-
-    dlg.setLayout(layout);
-    dlg.exec();
-
-    qDebug()<<box->isChecked();
-    return box->isChecked();
-}
-
 QString MainWindow::editComboBoxDialog(QString str,int index, int &i)
 {
     QStringList items=str.split(",");
@@ -372,6 +375,9 @@ QString MainWindow::editComboBoxDialog(QString str,int index, int &i)
     QComboBox *cbox = new QComboBox;
     cbox->addItems(items);
     cbox->setCurrentIndex(index);
+    cbox->setEditable(true);
+    cbox->lineEdit()->setReadOnly(true);
+    connect(cbox->lineEdit(), SIGNAL(returnPressed()), &dlg, SLOT(close()));
 
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(label, 0, 0);
