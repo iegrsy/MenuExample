@@ -3,7 +3,7 @@
         {
             "name": "settings_boolean",
             "type": "boolean",
-            "value": true,
+            "value": false,
             "values": ""
         },
         {
@@ -15,8 +15,8 @@
         {
             "name": "settings_enum",
             "type": "enum",
-            "value": "VALUE2",
-            "value_index": 1,
+            "value": "VALUE1",
+            "value_index": 0,
             "values": "VALUE1,VALUE2,VALUE3"
         }
     ],
@@ -25,7 +25,7 @@
             {
                 "name": "settings_boolean",
                 "type": "boolean",
-                "value": true,
+                "value": false,
                 "values": ""
             },
             {
@@ -37,8 +37,8 @@
             {
                 "name": "settings_enum",
                 "type": "enum",
-                "value": "VALUE1",
-                "value_index": 0,
+                "value": "VALUE2",
+                "value_index": 1,
                 "values": "VALUE1,VALUE2,VALUE3"
             }
         ],
@@ -76,7 +76,7 @@
             {
                 "name": "settings_string",
                 "type": "string",
-                "value": "kjahsdkjhakjsdh",
+                "value": "deneme2",
                 "values": ""
             }
         ],
@@ -85,20 +85,20 @@
                 {
                     "name": "settings_boolean",
                     "type": "boolean",
-                    "value": false,
+                    "value": true,
                     "values": ""
                 },
                 {
                     "name": "settings_string",
                     "type": "string",
-                    "value": "kjahsdkjhakjsdh",
+                    "value": "deneme3",
                     "values": ""
                 },
                 {
                     "name": "settings_enum",
                     "type": "enum",
-                    "value": "VALUE1",
-                    "value_index": 0,
+                    "value": "VALUE3",
+                    "value_index": 2,
                     "values": "VALUE1,VALUE2,VALUE3"
                 }
             ]
@@ -114,7 +114,7 @@
                 {
                     "name": "settings_string",
                     "type": "string",
-                    "value": "kjahsdkjhakjsdh",
+                    "value": "denme4",
                     "values": ""
                 },
                 {

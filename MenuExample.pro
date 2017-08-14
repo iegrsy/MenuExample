@@ -20,4 +20,7 @@ HEADERS  += mainwindow.h
 FORMS    += mainwindow.ui
 
 DISTFILES += \
-    settings.json
+    settings.json \
+    002-reply.png \
+    006-folder.png \
+    009-settings.png
