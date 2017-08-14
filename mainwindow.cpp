@@ -57,7 +57,7 @@ void MainWindow::showObj(QJsonObject obj)
         if(obj[s].isObject())
         {
             QListWidgetItem *item = new QListWidgetItem;
-            item->setIcon(QIcon("/home/ieg/Resimler/icons/006-folder.png"));
+            item->setIcon(QIcon("/home/ieg/qt/qtProjects/MenuExample/006-folder.png"));
             item->setText(s);
 
             ui->lstMenu->addItem(item);
@@ -68,7 +68,7 @@ void MainWindow::showObj(QJsonObject obj)
             for (int i=0; i<obj[s].toArray().count() ; i++)
             {
                 QListWidgetItem *item = new QListWidgetItem;
-                item->setIcon(QIcon("/home/ieg/Resimler/icons/009-settings.png"));
+                item->setIcon(QIcon("/home/ieg/qt/qtProjects/MenuExample/009-settings.png"));
                 item->setText(obj[s].toArray().at(i).toObject()["name"].toString());
 
                 if((obj[s].toArray().at(i).toObject()["type"].toString()).compare("boolean") == 0)
@@ -91,7 +91,7 @@ void MainWindow::showObj(QJsonObject obj)
     if(prevObj.count() > 0)
     {
         QListWidgetItem *item = new QListWidgetItem;
-        item->setIcon(QIcon("/home/ieg/Resimler/icons/001-arrows.png"));
+        item->setIcon(QIcon("/home/ieg/qt/qtProjects/MenuExample/002-reply.png"));
         item->setText("back_menu");
 
         ui->lstMenu->addItem(item);
