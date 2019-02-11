@@ -24,3 +24,6 @@ DISTFILES += \
     002-reply.png \
     006-folder.png \
     009-settings.png
+
+RESOURCES += \
+    images.qrc
